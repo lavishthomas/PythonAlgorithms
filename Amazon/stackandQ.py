@@ -1,0 +1,25 @@
+stack = []
+
+stack.append("a")
+print(stack)
+stack.append("b")
+print(stack)
+stack.append("d")
+print(stack)
+stack.append("e")
+print(stack)
+stack.insert(0, "z")
+print(stack)
+stack.pop()
+print(stack)
+
+from collections import deque 
+queue = deque(["Ram", "Tarun", "Asif", "John"]) 
+print(queue) 
+queue.append("Akbar") 
+print(queue) 
+queue.append("Birbal") 
+print(queue) 
+print(queue.pop())                  
+print(queue.pop())                  
+print(queue) 
