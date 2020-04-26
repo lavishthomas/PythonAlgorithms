@@ -1,14 +1,20 @@
+
 class Graph:
     def __init__(self, graph={}):
         self.graph = graph
 
     def add_vertix(self, new_vertice):
-        self.graph[new_vertice] = []
+        if new_vertice not in self.graph:
+            self.graph[new_vertice] = []
+        else:
+            pass
 
     def add_edge(self, vertix_a, vertix_b):
         if vertix_a in self.graph and vertix_b in self.graph:
-            self.graph[vertix_a].append(vertix_b)
-            self.graph[vertix_b].append(vertix_a)
+            if vertix_b not in self.graph[vertix_a]:
+                self.graph[vertix_a].append(vertix_b)
+            if vertix_a not in self.graph[vertix_b]:
+                self.graph[vertix_b].append(vertix_a)
         else:
             raise Exception("vertix not available")
 
@@ -26,27 +32,27 @@ class Graph:
         traversal_graph.appendleft(new_path)
 
         while(len(traversal_graph)):
-            print(" before : ", traversal_graph)
+            #print(" before : ", traversal_graph)
             current_path = traversal_graph.pop()
             current_node = current_path[len(current_path)-1]
-            print("current Node : " , current_node, current_path)
+            #print("current Node : " , current_node, current_path)
 
-            if (current_node == target_node):                
+            if (current_node == target_node):
                 return current_path
             else:
                 for node in self.graph[current_node]:
                     if node not in traversal_graph and node not in visited_nodes:
-                        # current_path.append(node)
+                        
                         new_path = current_path.copy()
                         new_path.append(node)
-                        print(" new path ", new_path)
+                        #print(" new path ", new_path)
                         traversal_graph.appendleft(new_path)
                         visited_nodes.append(node)
-            print("after :" , traversal_graph)
-            print("(-----------------------------)")
+            #print("after :" , traversal_graph)
+            #print("(-----------------------------)")
 
-            return "path not found"
-    
+        return "path not found"
+
     def dfs(self, start_node, target_node):
 
         if start_node in self.graph or target_node in self.graph:
@@ -61,12 +67,12 @@ class Graph:
         traversal_graph.append(new_path)
 
         while(len(traversal_graph)):
-            print(" before : ", traversal_graph)
+            #print(" before : ", traversal_graph)
             current_path = traversal_graph.pop()
             current_node = current_path[len(current_path)-1]
-            print("current Node : " , current_node, current_path)
+            #print("current Node : " , current_node, current_path)
 
-            if (current_node == target_node):                
+            if (current_node == target_node):
                 return current_path
             else:
                 for node in self.graph[current_node]:
@@ -74,11 +80,11 @@ class Graph:
                         # current_path.append(node)
                         new_path = current_path.copy()
                         new_path.append(node)
-                        print(" new path ", new_path)
+                        #print(" new path ", new_path)
                         traversal_graph.append(new_path)
                         visited_nodes.append(node)
-            print("after :" , traversal_graph)
-            print("(-----------------------------)")    
+            #print("after :" , traversal_graph)
+            # print("(-----------------------------)")
 
     def printGraph(self):
         ###
@@ -108,8 +114,15 @@ if __name__ == "__main__":
     new_graph.add_edge('e', 'f')
     new_graph.printGraph()
 
-    result = new_graph.bfs('a', 'f')
-    print(result)
+    #result = new_graph.bfs('a', 'f')
+    #print(result)
 
-    result = new_graph.dfs('a', 'f')
+    #result = new_graph.dfs('a', 'f')
+    #print(result)
+    
+    s_graph_data = {'3': ['2', '4'], '4': [
+        '3', '2'], '1': ['2'], '2': ['1', '3', '4']}
+    s_graph = Graph(s_graph_data)
+    result = s_graph.bfs('1', '4')
+    s_graph.printGraph()
     print(result)
