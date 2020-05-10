@@ -1,4 +1,4 @@
-def reorderElements(logFileSize, logLines):
+def reorderElements(logFileSize, logLines):1
     # WRITE YOUR CODE HERE
     
     ### Two lists were created in order  to capture 
