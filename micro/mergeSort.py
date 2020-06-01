@@ -31,9 +31,7 @@ def mergeSort(arr):
             sorted_array.append(right_arr[k])
 
     print(sorted_array)
-
     return sorted_array
-
 
 l = [15, 12, 51, 52, 60, 70, 80, 13, 14, 17, 97]
 print(len(l))

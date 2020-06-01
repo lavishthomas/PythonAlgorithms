@@ -8,7 +8,7 @@ print('Hi, %s.' % name)         # Writing output to STDOUT
 '''
 
 # Write your code here
-input_n_m_k = input();
+input_n_m_k = input()
 n, m, k = input_n_m_k.split(" ")
 
 m=int(m)

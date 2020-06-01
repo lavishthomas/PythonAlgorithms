@@ -1,10 +1,8 @@
 def multiply(x):
     return x * x
 
-
 def add(x):
     return x + x
-
 
 funcs = [multiply, add]
 for i in range(5):
@@ -21,6 +19,7 @@ print(filtered)
 from functools import reduce
 product = reduce((lambda x, y: x * y), items)
 print(product)
+
 # Output:
 # [0, 0]
 # [1, 2]
